@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade</title>
+    <link rel="shortcut icon" href="imgs/gaming.png">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/neon-button.css">
+</head>
+<body>
+    <svg style="height: 0; position: fixed;" height="0" width="0"><defs><clippath id="about-video" clipPathUnits="objectBoundingBox"><polygon points="0.9888 0.04 0.9675 0 0.2534 0 0.2085 0.056 0 0.056 0 0.676 0.2309 1 0.6054 1 0.6502 0.944 1 0.944 1 0.576 0.9888 0.546 0.9888 0.04"></polygon></clippath></defs></symbol></svg>
+    <audio id="audio" autoplay preload="metadata" loop="">
+        <source src="sounds/else-paris.mp3" type="audio/mpeg" codecs="mp3">
+        <source src="sounds/else-paris.ogg" type="audio/ogg" codecs="vorbis">
+    </audio>
+    <header>
+        <div class="container stripes">
+            <div class="title-container">
+                <a href="#choose"><h1>Arcade</h1></a>
+                <div class="title-container-score">
+                    <h2 class="base-score score-current">0</h2>
+                    <h2 class="base-score score-best">0</h2>
+                    <h2 class="base-score score-record">0</h2>
+                    <div class="header-buttons">
+                        <button id="soundsButton"></button>
+                        <button id="musicButton"></button>
+                    </div>
+                </div>
+            </div>
+            <h3 id="description"><br></h3>
+        </div>
+    </header>
+    <div id="l-form-bg"></div>
+    <main>
+        <div id="IGame">
+            <canvas id="gameCanvas" style="display: none;">Your browser doesn't support canvas</canvas>
+        </div>
+        <div class="main-spa">
+        </div>
+    </main>
+    <footer>
+        <div class="stripes">
+        <div class="flex-parent container">
+            <ul>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="logo flex-parent">
+                <a  href="#about">
+                    <img src="imgs/logo.svg" alt="logo" />
+                </a>
+            </div>
+            <p>by V.Khovanskiy at 2020</p>
+        </div>
+        </div>
+    </footer>
+</body>
+    <script src="http://fe.it-academy.by/JQ/jquery.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" defer></script>
+    <script src="js/base-view.js" defer></script>
+    <script src="js/helpers.js" defer></script>
+    <script src="js/main-view.js" defer></script>
+    <script src="js/main-model.js" defer></script>
+    <script src="js/main-controller.js" defer></script>
+    <script src="js/breakout/ui-control.js" defer></script>
+    <script src="js/breakout/ball-control.js" defer></script>
+    <script src="js/breakout/platform-control.js" defer></script>
+    <script src="js/breakout/blocks-control.js" defer></script>
+    <script src="js/breakout/breakout-game.js" defer></script>
+    <script>
+        "use strict";
+
+        var everythingLoaded = setInterval(function() {
+            if (/loaded|complete/.test(document.readyState)) {
+                clearInterval(everythingLoaded);     
+                gameLoad();
+            }
+        }, 10);
+
+        
+        function gameLoad(){
+            var dataStorage = new DataStorage();
+            var view = new MainView();
+            var model = new MainModel(view, dataStorage);
+            var controller = new MainController(model);
+            controller.init();
+        }
+
+    </script>
+
+</html>
