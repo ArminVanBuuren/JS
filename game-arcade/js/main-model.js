@@ -86,7 +86,7 @@ function MainModel(view, db){
 
         window.location.hash = "";
         switchToState(hashState.loading.key);
-        setTimeout(preLoad, 5000); // небольшая задержка, чтобы сэмулировать загрузку
+        setTimeout(preLoad, 1000); // небольшая задержка, чтобы сэмулировать загрузку
     }
 
     function preLoad(){
